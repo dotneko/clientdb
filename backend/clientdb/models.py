@@ -22,3 +22,4 @@ class Profile(models.Model):
     tel = models.CharField(max_length=12)
     address = models.CharField(max_length=120)
     area = models.CharField(max_length=20)
+    is_active = models.BooleanField(default=True)
