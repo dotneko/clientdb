@@ -1,27 +1,21 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ClientDB</title>
-    <style>
-      table, th, td {
-      padding: 10px;
-      border: 1px solid black; 
-      border-collapse: collapse;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Client List</h1>
+{% extends 'base.html' %}
+
+{% block title %}
+  Client List
+{% endblock %}
+
+{% block main %}
+   <h1>Client List</h1>
     {% if latest_client_list %}
-        <table>
+        <table class="table table-sm table-striped">
             <thead>
                 <tr>
-                    <td>Client ID</td>
-                    <td>Full name</td>
-                    <td>HKID</td>
-                    <td>Sex</td>
-                    <td>Telephone</td>
-                    <td>More</td>
+                    <th scope="col">Client ID</th>
+                    <th scope="col">Full name</th>
+                    <th scope="col">HKID</th>
+                    <th scope="col">Sex</th>
+                    <th scope="col">Telephone</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -41,5 +35,8 @@
     {% else %}
         <p>No clients are available.</p>
     {% endif %}
-  </body>
-</html>
+  
+{% endblock %}
+{% block sidebar %}
+  Sidebar
+{% endblock %}   

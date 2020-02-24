@@ -1,50 +1,51 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ClientDB</title>
-    <style>
-      table, th, td {
-      padding: 10px;
-      border: 1px solid black; 
-      border-collapse: collapse;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>{{ client.full_name }}</h1>
-    <table>
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ client.client_id }} - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<h1>{{ client.full_name }}</h1>
+<table class="table table-sm table-striped">
+    <tbody>
         <tr>
-            <td>Client ID</td>
+            <th scope="row">Client ID</th>
             <td>{{ client.client_id }}</td>
         </tr>
         <tr>
-            <td>Date of Birth</td>
+            <th scope="row">Date of Birth</th>
             <td>{{ client.dob }}</td>
         </tr>
         <tr>
-            <td>HKID</td>
+            <th scope="row">HKID</th>
             <td>{{ client.hk_id }}</td>
         </tr>
         <tr>
-            <td>Sex</td>
+            <th scope="row">Sex</th>
             <td>{{ client.sex }}</td>
         </tr>
         <tr>
-            <td>Telephone</td>
+            <th scope="row">Telephone</th>
             <td>{{ client.tel }}</td>
         </tr>
         <tr>
-            <td>Address</td>
+            <th scope="row">Address</th>
             <td>{{ client.address }}</td>
         </tr>
         <tr>
-            <td>District</td>
+            <th scope="row">District</th>
             <td>{{ client.area }}</td> 
         </tr>
-        <tr>
-            <td colspan="2"><input type="checkbox" checked={{ client.is_active }} /> Active
-            </td>
-        </tr>
-    </table>
-</body>
-</html>
+    </tbody>
+</table>
+{% endblock %}
+
+{% block sidebar %}
+  <h2>Status:</h2> 
+  {% if client.is_active %}
+  Active
+  {% else %}
+  Inactive
+  {% endif %}
+
+{% endblock %}
