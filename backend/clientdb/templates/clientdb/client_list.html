@@ -10,7 +10,7 @@
         <table class="table table-sm table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Client ID</th>
+                    <th scope="col">Client Ref</th>
                     <th scope="col">Full name</th>
                     <th scope="col">HKID</th>
                     <th scope="col">Sex</th>
@@ -21,7 +21,7 @@
             <tbody>
                 {% for client in latest_client_list %}
                 <tr>
-                    <td>{{ client.client_id }}</td>
+                    <td>{{ client.client_ref }}</td>
                     <td>{{ client.full_name }}</td>
                     <td>{{ client.hk_id }}</td>
                     <td>{{ client.sex }}</td>

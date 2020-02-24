@@ -16,7 +16,7 @@
         <table>
             <thead>
                 <tr>
-                    <td>Client ID</td>
+                    <td>Client Ref</td>
                     <td>Full name</td>
                     <td>HKID</td>
                     <td>Sex</td>
@@ -27,7 +27,7 @@
             <tbody>
                 {% for client in latest_client_list %}
                 <tr>
-                    <td>{{ client.client_id }}</td>
+                    <td>{{ client.client_ref }}</td>
                     <td>{{ client.full_name }}</td>
                     <td>{{ client.hk_id }}</td>
                     <td>{{ client.sex }}</td>

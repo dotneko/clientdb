@@ -1,7 +1,7 @@
 from django.db import models
 
-class Profile(models.Model):
-    client_id = models.CharField(max_length=10, blank=False)
+class Client(models.Model):
+    client_ref = models.CharField(max_length=10, blank=False)
     dob = models.DateField('date of birth')
     full_name = models.CharField(max_length=60)
     hk_id = models.CharField(max_length=20)

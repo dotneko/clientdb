@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ client.client_id }} - {{ block.super }}
+    {{ client.client_ref }} - {{ block.super }}
 {% endblock %}
 
 {% block main %}
@@ -9,8 +9,8 @@
 <table class="table table-sm table-striped">
     <tbody>
         <tr>
-            <th scope="row">Client ID</th>
-            <td>{{ client.client_id }}</td>
+            <th scope="row">Client Ref</th>
+            <td>{{ client.client_ref }}</td>
         </tr>
         <tr>
             <th scope="row">Date of Birth</th>
