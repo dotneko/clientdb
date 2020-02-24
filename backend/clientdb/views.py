@@ -16,9 +16,10 @@ class ClientList(ListView):
     model = Client
     context_object_name = 'latest_client_list'
 
-    def get_queryset(self):
-        """ Return last five clients."""
-        return Client.objects.order_by('id')[:5]
+    # def get_queryset(self):
+    #     """ Return last five clients."""
+    #     return Client.objects.order_by('id')[:5]
+
 
 class ClientCreateView(CreateView):
     model = Client 
