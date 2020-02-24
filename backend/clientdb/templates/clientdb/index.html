@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title of the document</title>
+    <style>
+      table, th, td {
+      padding: 10px;
+      border: 1px solid black; 
+      border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    {% if latest_client_list %}
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Client ID</td>
+                    <td>Full name</td>
+                    <td>HKID</td>
+                    <td>Sex</td>
+                    <td>Telephone</td>
+                    <td>More</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in latest_client_list %}
+                <tr>
+                    <td>{{ client.client_id }}</td>
+                    <td>{{ client.full_name }}</td>
+                    <td>{{ client.hk_id }}</td>
+                    <td>{{ client.sex }}</td>
+                    <td>{{ client.tel }}</td>
+                    <td><a href="{% url 'clientdb:detail' client.id %}">Details</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p>No clients are available.</p>
+    {% endif %}
+  </body>
+</html>

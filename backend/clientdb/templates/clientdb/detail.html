@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ClientDB</title>
+    <style>
+      table, th, td {
+      padding: 10px;
+      border: 1px solid black; 
+      border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{{ client.full_name }}</h1>
+    <table>
+        <tr>
+            <td>Client ID</td>
+            <td>{{ client.client_id }}</td>
+        </tr>
+        <tr>
+            <td>Date of Birth</td>
+            <td>{{ client.dob }}</td>
+        </tr>
+        <tr>
+            <td>HKID</td>
+            <td>{{ client.hk_id }}</td>
+        </tr>
+        <tr>
+            <td>Sex</td>
+            <td>{{ client.sex }}</td>
+        </tr>
+        <tr>
+            <td>Telephone</td>
+            <td>{{ client.tel }}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>{{ client.address }}</td>
+        </tr>
+        <tr>
+            <td>District</td>
+            <td>{{ client.area }}</td> 
+        </tr>
+        <tr>
+            <td colspan="2"><input type="checkbox" checked={{ client.is_active }} /> Active
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
