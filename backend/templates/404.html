@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+Not Found
+{% endblock %}
+
+{% block main %}
+<h1>Page not found</h1>
+<p>Sorry, page not found.</p>
+<p><a href="{%url 'clientdb:ClientList' %}">Return to Home</a></p>
+{% endblock %}
