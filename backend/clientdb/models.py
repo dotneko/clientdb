@@ -4,7 +4,8 @@ from django.urls import reverse
 class Client(models.Model):
     client_ref = models.CharField(max_length=10, blank=False)
     dob = models.DateField('date of birth', blank=True, null=True)
-    full_name = models.CharField(max_length=60)
+    lastname = models.CharField(max_length=60)
+    firstname =  models.CharField(max_length=60, blank=True, null=True)
     hk_id = models.CharField(max_length=20)
     
     MALE = 'M'
@@ -29,8 +30,8 @@ class Client(models.Model):
         ordering = ('-client_ref',)
 
     def __str__(self):
-        return '{} | {} - {}'.format(
-            self.client_ref, self.full_name, self.hk_id
+        return '{} | {}, {} - {}'.format(
+            self.client_ref, self.lastname, self.firstname, self.hk_id
         )
     
     def get_absolute_url(self):
