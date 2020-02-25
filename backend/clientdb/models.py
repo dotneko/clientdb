@@ -5,7 +5,7 @@ class Client(models.Model):
     client_ref = models.CharField(max_length=10, blank=False)
     dob = models.DateField('date of birth', blank=True, null=True)
     lastname = models.CharField(max_length=60)
-    firstname =  models.CharField(max_length=60, blank=True, null=True)
+    firstname =  models.CharField(max_length=60, default='', blank=True)
     hk_id = models.CharField(max_length=20)
     
     MALE = 'M'

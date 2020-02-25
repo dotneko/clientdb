@@ -15,7 +15,6 @@ def index(request):
 
 class ClientList(LoginRequiredMixin, ListView):
     login_url = 'user:login'
-    redirect_field_name = 'redirect_to'
     template_name = 'clientdb/client_list.html'
     paginate_by = 10
     model = Client
@@ -29,7 +28,7 @@ class ClientCreateView(LoginRequiredMixin, CreateView):
     login_url = 'user:login'
 
     model = Client 
-    fields = ('client_ref', 'full_name', 'dob','hk_id', 'sex', 'tel','address','area')
+    fields = ('client_ref', 'lastname', 'firstname', 'dob','hk_id', 'sex', 'tel','address','area')
 
 class ClientDetailView(LoginRequiredMixin, DetailView):
     login_url = 'user:login'
