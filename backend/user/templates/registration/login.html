@@ -5,8 +5,8 @@
 {% block title %}
 Login - {{ block.super }}
 {% endblock title %}
-
 {% block main %}
+    <h1>Login to ClientDB</h1>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}

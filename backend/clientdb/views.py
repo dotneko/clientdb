@@ -1,5 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, CreateView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import Client
 
 # Create your views here.
@@ -11,7 +13,9 @@ def index(request):
     }
     return render(request, 'clientdb/index.html', context)
 
-class ClientList(ListView):
+class ClientList(LoginRequiredMixin, ListView):
+    login_url = 'user:login'
+    redirect_field_name = 'redirect_to'
     template_name = 'clientdb/client_list.html'
     paginate_by = 10
     model = Client
@@ -21,11 +25,15 @@ class ClientList(ListView):
     #     """ Return last five clients."""
     #     return Client.objects.order_by('id')[:5]
 
-class ClientCreateView(CreateView):
+class ClientCreateView(LoginRequiredMixin, CreateView):
+    login_url = 'user:login'
+
     model = Client 
     fields = ('client_ref', 'full_name', 'dob','hk_id', 'sex', 'tel','address','area')
 
-class ClientDetailView(DetailView):
+class ClientDetailView(LoginRequiredMixin, DetailView):
+    login_url = 'user:login'
+
     template_name = 'clientdb/client_detail.html'
     model = Client
 
