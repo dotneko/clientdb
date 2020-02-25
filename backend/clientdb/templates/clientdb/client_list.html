@@ -67,7 +67,7 @@
                     <td>{{ client.hk_id }}</td>
                     <td>{{ client.sex }}</td>
                     <td>{{ client.tel }}</td>
-                    <td><a href="{% url 'clientdb:detail' client.id %}">Details</a></td>
+                    <td><a href="{% url 'clientdb:ClientDetail' client.id %}">Details</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

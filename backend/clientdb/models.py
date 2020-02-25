@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Client(models.Model):
     client_ref = models.CharField(max_length=10, blank=False)
@@ -31,3 +32,6 @@ class Client(models.Model):
         return '{} | {} - {}'.format(
             self.client_ref, self.full_name, self.hk_id
         )
+    
+    def get_absolute_url(self):
+        return reverse('clientdb:ClientDetail', kwargs={'pk': self.pk})

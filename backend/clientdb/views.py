@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 from .models import Client
 
 # Create your views here.
@@ -25,6 +25,10 @@ class ClientCreateView(CreateView):
     model = Client 
     fields = ('client_ref', 'full_name', 'dob','hk_id', 'sex', 'tel','address','area')
 
-def detail(request, client_id):
-    client = get_object_or_404(Client, pk=client_id)
-    return render(request, 'clientdb/detail.html', {'client': client })
+class ClientDetailView(DetailView):
+    template_name = 'clientdb/client_detail.html'
+    model = Client
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
