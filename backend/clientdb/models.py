@@ -2,7 +2,7 @@ from django.db import models
 
 class Client(models.Model):
     client_ref = models.CharField(max_length=10, blank=False)
-    dob = models.DateField('date of birth')
+    dob = models.DateField('date of birth', blank=True, null=True)
     full_name = models.CharField(max_length=60)
     hk_id = models.CharField(max_length=20)
     
@@ -19,10 +19,13 @@ class Client(models.Model):
         choices=SEX_CHOICES,
     )
 
-    tel = models.CharField(max_length=12)
-    address = models.CharField(max_length=120)
-    area = models.CharField(max_length=20)
+    tel = models.CharField(max_length=12, blank=True, null=True)
+    address = models.CharField(max_length=120, blank=True, null=True)
+    area = models.CharField(max_length=20, blank=True, null=True)
     is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ('-client_ref',)
 
     def __str__(self):
         return '{} | {} - {}'.format(
