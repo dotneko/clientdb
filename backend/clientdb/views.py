@@ -13,13 +13,13 @@ def index(request):
 
 class ClientList(ListView):
     template_name = 'clientdb/client_list.html'
+    paginate_by = 10
     model = Client
     context_object_name = 'latest_client_list'
 
     # def get_queryset(self):
     #     """ Return last five clients."""
     #     return Client.objects.order_by('id')[:5]
-
 
 class ClientCreateView(CreateView):
     model = Client 
