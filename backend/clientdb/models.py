@@ -2,12 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 class Client(models.Model):
-    client_ref = models.CharField(max_length=10, blank=False)
-    dob = models.DateField('date of birth', blank=True, null=True)
-    lastname = models.CharField(max_length=60)
-    firstname =  models.CharField(max_length=60, default='', blank=True)
-    hk_id = models.CharField(max_length=20)
-    
     MALE = 'M'
     FEMALE = 'F'
     OTHER = 'O'
@@ -16,14 +10,16 @@ class Client(models.Model):
         (FEMALE, 'Female'),
         (OTHER, 'Other'),
     ]
-    sex = models.CharField(
-        max_length=1,
-        choices=SEX_CHOICES,
-    )
-
+    
+    client_ref = models.CharField(max_length=10, blank=False)
+    dob = models.DateField('date of birth', blank=True, null=True)
+    lastname = models.CharField(max_length=60)
+    firstname =  models.CharField(max_length=60, default='', blank=True)
+    hk_id = models.CharField(max_length=20, blank=True, null=True)
+    sex = models.CharField(max_length=1, choices=SEX_CHOICES, blank=True, null=True)
     tel = models.CharField(max_length=12, blank=True, null=True)
-    address = models.CharField(max_length=120, blank=True, null=True)
-    area = models.CharField(max_length=20, blank=True, null=True)
+    address = models.CharField(max_length=250, blank=True, null=True)
+    area = models.CharField(max_length=60, blank=True, null=True)
     is_active = models.BooleanField(default=True)
 
     class Meta:
