@@ -14,7 +14,7 @@ class Client(models.Model):
     client_ref = models.CharField(max_length=10, blank=False)
     dob = models.DateField('date of birth', blank=True, null=True)
     lastname = models.CharField(max_length=60)
-    firstname =  models.CharField(max_length=60, default='', blank=True)
+    firstname =  models.CharField(max_length=60, default='', blank=True, null=True)
     hk_id = models.CharField(max_length=20, blank=True, null=True)
     sex = models.CharField(max_length=1, choices=SEX_CHOICES, blank=True, null=True)
     tel = models.CharField(max_length=12, blank=True, null=True)
