@@ -4,6 +4,7 @@ services:
     image: postgres
     volumes:
       - pg-vol:/var/lib/postgresql/data/
+      - ./backend/dbbackup:/dbbackup
   backend:
     build: ./backend
     volumes:
