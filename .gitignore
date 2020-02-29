@@ -1,4 +1,5 @@
 .vscode
+backend/dbbackup
 venv/
 *.sqlite3
 
