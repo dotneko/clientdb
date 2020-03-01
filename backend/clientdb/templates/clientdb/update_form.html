@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags %}
 {% block main %}
-    <h1>Add New Client</h1>
+    <h1>Client Details</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.client_ref|as_crispy_field }}
@@ -36,8 +36,9 @@
         </div>
         {{ form.is_active|as_crispy_field }}
 
-        <button type="submit" class="btn btn-success">Save New Client</button>
-        <a class="btn btn-secondary" href="{% url 'clientdb:ClientList' %}">Cancel</a>
+        <button type="submit" class="btn btn-success">Modify Record</button>
+        <a class="btn btn-danger" href="{% url 'clientdb:ClientDelete' pk=client.id %}">Delete</a>
+        <a class="btn btn-secondary" href="{% url 'clientdb:ClientList' %}">Return to Client List</a>
     </form>
 
 {% endblock %}

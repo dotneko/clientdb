@@ -8,7 +8,7 @@
    <h1>Search Results</h1>
 
     <form action="{% url 'clientdb:SearchResults' %}" method="get">
-        <input name="q" type="text" placeholder="Search..." />
+        <input class="form-control" name="q" type="text" placeholder="Search..." />
     </form>
     {% if search_result_list %}
         <table class="table table-sm table-striped">

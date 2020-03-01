@@ -1,18 +1,10 @@
-from django.shortcuts import get_object_or_404, render
-from django.views.generic import ListView, CreateView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 
 from .models import Client
-
-# Create your views here.
-
-def index(request):
-    latest_client_list = Client.objects.order_by('id')[:5]
-    context = {
-        'latest_client_list': latest_client_list,
-    }
-    return render(request, 'clientdb/index.html', context)
+from .forms import ClientForm
 
 class ClientList(LoginRequiredMixin, ListView):
     login_url = 'user:login'
@@ -25,7 +17,7 @@ class ClientList(LoginRequiredMixin, ListView):
     #     """ Return last five clients."""
     #     return Client.objects.order_by('id')[:5]
 
-class SearchResultsView(ListView):
+class SearchResults(ListView):
     model = Client
     template_name = 'clientdb/search_results.html'
     context_object_name = 'search_result_list'
@@ -40,18 +32,25 @@ class SearchResultsView(ListView):
         )
         return object_list
 
-class ClientCreateView(LoginRequiredMixin, CreateView):
+class ClientCreate(LoginRequiredMixin, CreateView):
     login_url = 'user:login'
+    template_name = 'clientdb/client_form.html'
+    form_class = ClientForm
 
-    model = Client 
-    fields = ('client_ref', 'lastname', 'firstname', 'dob','hk_id', 'sex', 'tel','address','area')
-
-class ClientDetailView(LoginRequiredMixin, DetailView):
+class ClientDetail(LoginRequiredMixin, DetailView):
     login_url = 'user:login'
-
     template_name = 'clientdb/client_detail.html'
     model = Client
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+class ClientUpdate(LoginRequiredMixin, UpdateView):
+    template_name = 'clientdb/update_form.html'
+    form_class = ClientForm
+    model = Client
+
+class ClientDelete(LoginRequiredMixin, DeleteView):
+    model = Client
+    success_url = reverse_lazy('clientdb:ClientList')

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ client.client_ref }} - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<h1>Confirm Delete</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <br />
+    <div class="alert alert-danger">
+        <h3>Are you sure you want to delete the following record?</h3>
+    </div>
+
+    <h3>{{ client.lastname }}, {{ client.firstname }}</h3>
+    <table class="table table-sm table-striped">
+        <tbody>
+            <tr>
+                <th scope="row">Client Ref</th>
+                <td>{{ client.client_ref }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Date of Birth</th>
+                <td>{{ client.dob }}</td>
+            </tr>
+            <tr>
+                <th scope="row">HKID</th>
+                <td>{{ client.hk_id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Sex</th>
+                <td>{{ client.sex }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Telephone</th>
+                <td>{{ client.tel }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Address</th>
+                <td>{{ client.address }}</td>
+            </tr>
+            <tr>
+                <th scope="row">District</th>
+                <td>{{ client.area }}</td> 
+            </tr>
+        </tbody>
+    </table>
+
+    <input class="btn btn-danger" type="submit" value="Confirm Delete" />
+    <a class="btn btn-secondary" href="{% url 'clientdb:ClientDetail' pk=client.id %}">Cancel</a>
+</form>
+
+{% endblock %}

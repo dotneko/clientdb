@@ -10,12 +10,12 @@
 
     {% if is_paginated %}
         <nav class="row">
-            <div class="col-6">
+            <div class="col-8">
                 <form action="{% url 'clientdb:SearchResults' %}" method="get">
-                    <input name="q" type="text" placeholder="Search..." />
+                    <input class="form-control" name="q" type="text" placeholder="Search..." />
                 </form>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <ul class="pagination">
                     <li class="page-item">
                         <a href="{% url 'clientdb:ClientList' %}?page=1"
@@ -88,5 +88,4 @@
   
 {% endblock %}
 {% block sidebar %}
-  Sidebar
 {% endblock %}   
