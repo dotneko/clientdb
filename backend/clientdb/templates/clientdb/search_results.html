@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Client List
+{% endblock %}
+
+{% block main %}
+   <h1>Search Results</h1>
+
+    <form action="{% url 'clientdb:SearchResults' %}" method="get">
+        <input name="q" type="text" placeholder="Search..." />
+    </form>
+    {% if search_result_list %}
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Ref</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">HKID</th>
+                    <th scope="col">Sex</th>
+                    <th scope="col">Telephone</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in search_result_list %}
+                <tr>
+                    <td>{{ client.client_ref }}</td>
+                    <td>{{ client.lastname }}</td>
+                    <td>{{ client.firstname }}</td>
+                    <td>{{ client.hk_id }}</td>
+                    <td>{{ client.sex }}</td>
+                    <td>{{ client.tel }}</td>
+                    <td><a href="{% url 'clientdb:ClientDetail' client.id %}">Details</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+   
+    {% else %}
+        <p>No clients are available.</p>
+    {% endif %}
+  
+{% endblock %}
+{% block sidebar %}
+  Sidebar
+{% endblock %}   
